@@ -1,0 +1,6 @@
+{
+  "name": "codespaces-research",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "postCreateCommand": "echo PC_MARKER=$(date +%s)_$(hostname)_$(id -u) > /tmp/postcreate_marker.txt && env | sort > /tmp/env_snapshot.txt && echo done-postCreate",
+  "onCreateCommand": "echo ONC_MARKER=$(date +%s) > /tmp/oncreate_marker.txt"
+}
